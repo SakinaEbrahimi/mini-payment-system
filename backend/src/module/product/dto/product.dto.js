@@ -9,5 +9,5 @@ export const buyProductSchema = z.object({
 });
 
 export const searchQuerySchema = z.object({
-  search: z.string().trim().min(2),
+  search: z.string().trim().optional(),
 });

@@ -10,7 +10,7 @@ function Products() {
 
   const loadProduct = async () => {
     try {
-      setIsLoading(true);
+      setIsLoading(true)
       const result = await getProductsApi(search);
       setProducts(result);
     } catch (error) {
