@@ -3,7 +3,6 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { cancelOrdersApi, getOrdersApi } from "../services/orderService.js";
 import {
-  getPaymentByOrderIdApi,
   getPaymentsApi,
   payOrderPaymentsApi,
 } from "../services/paymentService.js";
@@ -30,7 +29,7 @@ export default function Orders() {
 
         return {
           ...order,
-          paymentId: payment._id,
+          paymentId: payment?._id,
         };
       });
 
@@ -127,10 +126,10 @@ export default function Orders() {
                     <th>Action</th>
                   </tr>
                 </thead>
-                {orders.map((order, index) => {
-                  return (
-                    <tbody key={order._id}>
-                      <tr>
+                <tbody>
+                  {orders.map((order, index) => {
+                    return (
+                      <tr key={order._id}>
                         <td>{index + 1}</td>
                         <td>
                           <Link
@@ -201,9 +200,9 @@ export default function Orders() {
                           )}
                         </td>
                       </tr>
-                    </tbody>
-                  );
-                })}
+                    );
+                  })}
+                </tbody>
               </table>
             ) : (
               <div>Orders Not Found</div>

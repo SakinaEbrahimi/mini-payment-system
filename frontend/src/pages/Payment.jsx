@@ -38,12 +38,11 @@ export default function Payments() {
       }
 
       setIsPayingId(paymentId);
+
       const result = await payOrderPaymentsApi(
         paymentId,
         idempotencyKeyRef.current,
       );
-
-      idempotencyKeyRef.current = null;
 
       if (!result.success) {
         toast.error(result.message);
@@ -56,6 +55,7 @@ export default function Payments() {
     } catch (error) {
       toast.error(error.message);
     } finally {
+      idempotencyKeyRef.current = null;
       setIsPayingId(null);
     }
   };
@@ -87,10 +87,10 @@ export default function Payments() {
                   </tr>
                 </thead>
 
-                {payments.map((payment, index) => {
-                  return (
-                    <tbody key={payment._id}>
-                      <tr>
+                <tbody>
+                  {payments.map((payment, index) => {
+                    return (
+                      <tr key={payment._id}>
                         <td>{index + 1}</td>
                         <td>{payment.orderId}</td>
                         <td>${payment.order.amount}</td>
@@ -138,9 +138,9 @@ export default function Payments() {
                           )}
                         </td>
                       </tr>
-                    </tbody>
-                  );
-                })}
+                    );
+                  })}
+                </tbody>
               </table>
             ) : (
               <div>Payment not found</div>
