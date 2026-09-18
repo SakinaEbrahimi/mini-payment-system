@@ -366,5 +366,4 @@ The main goal is to practice **transactional database operations, idempotent pay
 
 **Sakina Ebrahimi**
 
-GitHub: [Your GitHub Profile]
-LinkedIn: [Your LinkedIn Profile]
+LinkedIn: https://www.linkedin.com/in/sakina-ebrahimi/
